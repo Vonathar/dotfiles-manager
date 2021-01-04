@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>dotfiles-manager</artifactId>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <groupId>org.springframework.boot</groupId>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <artifactId>spring-boot-starter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <artifactId>spring-shell-starter</artifactId>
+      <groupId>org.springframework.shell</groupId>
+      <version>2.0.1.RELEASE</version>
+    </dependency>
+  </dependencies>
+  <description>A simple manager for i3 dotfiles</description>
+  <groupId>uk.caputo</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>dotfiles-manager</name>
+
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <relativePath/>
+    <version>2.4.1</version> <!-- lookup parent from repository -->
+  </parent>
+
+  <properties>
+    <java.version>11</java.version>
+  </properties>
+
+  <version>1.0.0</version>
+
+</project>
