@@ -26,4 +26,18 @@ class StringFormatterTest {
     assertEquals(stringFormatter.addRightPadding("X", 3), "X  ");
     assertEquals(stringFormatter.addRightPadding("X", 5), "X    ");
   }
+
+  @Test
+  void addBilateralPadding_OddLength_ShouldAddPaddingOnBothSides() {
+    assertEquals(stringFormatter.addBilateralPadding("X", 3), " X ");
+    assertEquals(stringFormatter.addBilateralPadding("X", 5), "  X  ");
+    assertEquals(stringFormatter.addBilateralPadding("X", 15), "       X       ");
+  }
+
+  @Test
+  void addBilateralPadding_EvenLength_ShouldAddPaddingOnBothSidesWithExcessOnRightSide() {
+    assertEquals(stringFormatter.addBilateralPadding("X", 4), " X  ");
+    assertEquals(stringFormatter.addBilateralPadding("X", 6), "  X   ");
+    assertEquals(stringFormatter.addBilateralPadding("X", 10), "    X     ");
+  }
 }
