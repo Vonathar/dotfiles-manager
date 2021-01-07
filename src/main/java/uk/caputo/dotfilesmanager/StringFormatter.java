@@ -60,4 +60,26 @@ public class StringFormatter {
     int rightPadding = (length / 2) + length % 2;
     return " ".repeat(leftPadding) + content + " ".repeat(rightPadding);
   }
+
+  /**
+   * Adds a surrounding border using asterisk characters. The text content is automatically centered
+   * in the border, and two newline characters are added at the end. The size of the border is
+   * dynamically calculated based on the line length constant from the main class.
+   *
+   * @param content the strings to add in the border
+   * @return the content with an asterisk border.
+   */
+  public String addAsteriskBorder(String... content) {
+    int LINE_LENGTH = DotfilesManagerApplication.LINE_LENGTH;
+    StringBuilder sb = new StringBuilder();
+    sb.append("*".repeat(LINE_LENGTH)).append("\n");
+    for (String s : content) {
+      sb.append("*".repeat(10))
+          .append(addBilateralPadding(s, LINE_LENGTH - 20))
+          .append("*".repeat(10))
+          .append("\n");
+    }
+    sb.append("*".repeat(LINE_LENGTH)).append("\n\n");
+    return sb.toString();
+  }
 }
