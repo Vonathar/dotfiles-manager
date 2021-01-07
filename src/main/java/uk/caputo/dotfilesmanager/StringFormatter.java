@@ -19,6 +19,9 @@ public class StringFormatter {
    * @return the padded string.
    */
   public String addLeftPadding(String content, int length) {
+    if (length < content.length()) {
+      throw new IllegalArgumentException("Content length is greater than requested length.");
+    }
     String formatting = "%" + length + "s";
     return String.format(formatting, content);
   }
@@ -32,6 +35,9 @@ public class StringFormatter {
    * @return the padded string.
    */
   public String addRightPadding(String content, int length) {
+    if (length < content.length()) {
+      throw new IllegalArgumentException("Content length is greater than requested length.");
+    }
     String formatting = "%-" + length + "s";
     return String.format(formatting, content);
   }
