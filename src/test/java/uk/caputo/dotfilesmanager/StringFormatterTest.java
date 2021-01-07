@@ -1,6 +1,7 @@
 package uk.caputo.dotfilesmanager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,24 @@ class StringFormatterTest {
   }
 
   @Test
+  void addLeftPadding_LengthTooShort_ShouldThrowIllegalArgumentException() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> stringFormatter.addLeftPadding("String of size 17", 10));
+  }
+
+  @Test
   void addRightPadding_ShouldAddRightPadding() {
     assertEquals(stringFormatter.addRightPadding("X", 1), "X");
     assertEquals(stringFormatter.addRightPadding("X", 3), "X  ");
     assertEquals(stringFormatter.addRightPadding("X", 5), "X    ");
+  }
+
+  @Test
+  void addRightPadding_LengthTooShort_ShouldThrowIllegalArgumentException() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> stringFormatter.addRightPadding("String of size 17", 10));
   }
 
   @Test
@@ -39,5 +54,12 @@ class StringFormatterTest {
     assertEquals(stringFormatter.addBilateralPadding("X", 4), " X  ");
     assertEquals(stringFormatter.addBilateralPadding("X", 6), "  X   ");
     assertEquals(stringFormatter.addBilateralPadding("X", 10), "    X     ");
+  }
+
+  @Test
+  void addBilateralPadding_LengthTooShort_ShouldThrowIllegalArgumentException() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> stringFormatter.addBilateralPadding("String of size 17", 10));
   }
 }
