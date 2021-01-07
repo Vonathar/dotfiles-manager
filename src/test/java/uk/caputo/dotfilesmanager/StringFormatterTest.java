@@ -62,4 +62,25 @@ class StringFormatterTest {
         IllegalArgumentException.class,
         () -> stringFormatter.addBilateralPadding("String of size 17", 10));
   }
+
+  @Test
+  void addAsteriskBorder_SingleArgument_ShouldAddSurroundingAsteriskBorder() {
+    String expectedResult =
+        "********************************************************************************\n"
+            + "**********                            Test                            **********\n"
+            + "********************************************************************************\n\n";
+    String actualResult = stringFormatter.addAsteriskBorder("Test");
+    assertEquals(actualResult, expectedResult);
+  }
+
+  @Test
+  void addAsteriskBorder_MultipleArguments_ShouldAddSurroundingAsteriskBorder() {
+    String expectedResult =
+        "********************************************************************************\n"
+            + "**********                            Two                             **********\n"
+            + "**********                          Strings                           **********\n"
+            + "********************************************************************************\n\n";
+    String actualResult = stringFormatter.addAsteriskBorder("Two", "Strings");
+    assertEquals(actualResult, expectedResult);
+  }
 }
