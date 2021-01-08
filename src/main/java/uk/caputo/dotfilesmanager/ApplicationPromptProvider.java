@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @author Gianmarco Caputo
  */
 @Component
-public class DotfilesManagerPromptProvider implements PromptProvider {
+public class ApplicationPromptProvider implements PromptProvider {
 
   @Override
   public AttributedString getPrompt() {

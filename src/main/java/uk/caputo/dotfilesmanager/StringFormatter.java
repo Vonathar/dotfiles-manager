@@ -70,7 +70,7 @@ public class StringFormatter {
    * @return the content with an asterisk border.
    */
   public String addAsteriskBorder(String... content) {
-    int LINE_LENGTH = DotfilesManagerApplication.LINE_LENGTH;
+    int LINE_LENGTH = Application.LINE_LENGTH;
     StringBuilder sb = new StringBuilder();
     sb.append("*".repeat(LINE_LENGTH)).append("\n");
     for (String s : content) {
