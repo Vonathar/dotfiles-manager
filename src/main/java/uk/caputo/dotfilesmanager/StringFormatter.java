@@ -82,4 +82,28 @@ public class StringFormatter {
     sb.append("*".repeat(LINE_LENGTH)).append("\n\n");
     return sb.toString();
   }
+
+  /**
+   * Separates two strings by adding padding between them. Text from each side is not allowed to
+   * overflow into the other, so the length of each side is preserved regardless of its content.
+   *
+   * @param leftContent the string to display on the left side.
+   * @param rightContent the string to display on the right side.
+   * @param leftLength the length of the left side (in characters).
+   * @return the string with the sides separated with padding.
+   */
+  public String separateSides(String leftContent, String rightContent, int leftLength) {
+    if (leftLength >= Application.LINE_LENGTH) {
+      throw new IllegalArgumentException(
+          "Length of the left string is greater than the maximum line length.");
+    }
+    final int RIGHT_LENGTH = Application.LINE_LENGTH - leftLength;
+    final int LEFT_PADDING = leftLength + 1;
+    StringBuilder rightSide = new StringBuilder(rightContent);
+    for (int i = RIGHT_LENGTH; i < rightSide.length(); i += (RIGHT_LENGTH + LEFT_PADDING)) {
+      rightSide.insert(i, addRightPadding("\n", LEFT_PADDING));
+    }
+    rightSide.append("\n");
+    return addRightPadding(leftContent, leftLength) + rightSide;
+  }
 }
