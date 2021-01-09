@@ -83,4 +83,27 @@ class StringFormatterTest {
     String actualResult = stringFormatter.addAsteriskBorder("Two", "Strings");
     assertEquals(actualResult, expectedResult);
   }
+
+  @Test
+  void separateSides_ShouldReturnStringWithSeparatedContent() {
+    String expectedResult =
+        "XYZ                                                                         1234\n"
+            + "                                                                            5678\n";
+    String actualResult = stringFormatter.separateSides("XYZ", "12345678", 76);
+    assertEquals(expectedResult, actualResult);
+  }
+
+  @Test
+  void separateSides_LengthTooShort_ShouldThrowIllegalArgumentException() {
+    assertThrows(
+        IllegalArgumentException.class, () -> stringFormatter.separateSides("ABCDEFG", "XYZ", 3));
+  }
+
+  @Test
+  void separateSides_LengthTooLong_ShouldThrowIllegalArgumentException() {
+    int MAX_LENGTH = Application.LINE_LENGTH;
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> stringFormatter.separateSides("XYZ", "XYZ", MAX_LENGTH + 1));
+  }
 }
