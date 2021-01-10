@@ -122,4 +122,14 @@ public class StringFormatter {
     sb.append("\n");
     return sb.toString();
   }
+
+  /**
+   * Changes the first character in a string to uppercase.
+   *
+   * @param input the string with a lowercase first character.
+   * @return the string with an uppercase first character.
+   */
+  public String capitalizeFirstLetter(String input) {
+    return input.substring(0, 1).toUpperCase() + input.substring(1);
+  }
 }
