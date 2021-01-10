@@ -24,7 +24,7 @@ class HelpCommandTest {
     List<Command> commands = Command.getImplementers();
     String actualResult = shell.evaluate(() -> "help").toString();
     for (Command c : commands) {
-      assertTrue(actualResult.contains(c.printDescription()));
+      assertTrue(actualResult.contains(c.getInfo()));
     }
   }
 
