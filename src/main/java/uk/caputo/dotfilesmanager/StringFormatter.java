@@ -103,7 +103,23 @@ public class StringFormatter {
     for (int i = RIGHT_LENGTH; i < rightSide.length(); i += (RIGHT_LENGTH + LEFT_PADDING)) {
       rightSide.insert(i, addRightPadding("\n", LEFT_PADDING));
     }
-    rightSide.append("\n");
     return addRightPadding(leftContent, leftLength) + rightSide;
+  }
+
+  /**
+   * Indents multiple children strings below a parent string.
+   *
+   * @param indentation the amount of spaces to use for indentation.
+   * @param parent the string at the top of the list, not indented.
+   * @param children the strings to indent below the parent string.
+   * @return the formatted string.
+   */
+  public String listWithIndent(int indentation, String parent, String... children) {
+    StringBuilder sb = new StringBuilder(parent + "\n");
+    for (String s : children) {
+      sb.append(" ".repeat(indentation)).append(s).append("\n");
+    }
+    sb.append("\n");
+    return sb.toString();
   }
 }
