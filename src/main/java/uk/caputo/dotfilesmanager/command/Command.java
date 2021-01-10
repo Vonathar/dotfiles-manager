@@ -1,6 +1,7 @@
 package uk.caputo.dotfilesmanager.command;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.caputo.dotfilesmanager.StringFormatter;
@@ -34,6 +35,12 @@ public abstract class Command {
   public static List<Command> getImplementers() {
     return implementers;
   }
+
+  public abstract String getDescription();
+
+  public abstract LinkedHashMap<String, String> getOptions();
+
+  public abstract String[] getUsageExamples();
 
   /**
    * Returns the formatted command information, ready to be printed to the shell.
