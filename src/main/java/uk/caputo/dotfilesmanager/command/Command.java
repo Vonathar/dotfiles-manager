@@ -17,14 +17,14 @@ public abstract class Command {
 
   private static final List<Command> implementers = new ArrayList<>();
   private final String command;
-  private final String description;
   @Autowired private StringFormatter stringFormatter;
 
-  public Command(String command, String description) {
-    this.command = command;
-    this.description = description;
+  public Command() {
+    this.command = this.getClass().getSimpleName().replace("Command", "").toLowerCase();
     implementers.add(this);
   }
+
+  public abstract String getDescription();
 
   /**
    * Returns the list of all classes that extend the Command class.
@@ -41,6 +41,6 @@ public abstract class Command {
    * @return the formatted command information.
    */
   public String getInfo() {
-    return stringFormatter.separateSides(command, description, 15);
+    return stringFormatter.separateSides(command, getDescription(), 15);
   }
 }
