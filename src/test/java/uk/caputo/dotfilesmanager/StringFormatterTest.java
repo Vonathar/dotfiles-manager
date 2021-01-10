@@ -106,4 +106,18 @@ class StringFormatterTest {
         IllegalArgumentException.class,
         () -> stringFormatter.separateSides("XYZ", "XYZ", MAX_LENGTH + 1));
   }
+
+  @Test
+  void listWithIndent_ShouldIndentAllChildrenStringsBelowParentString() {
+    final int INDENTATION = 2;
+    String expectedResult =
+        "Parent\n"
+            + " ".repeat(INDENTATION)
+            + "Child 1\n"
+            + " ".repeat(INDENTATION)
+            + "Child 2\n\n";
+    String actualResult =
+        stringFormatter.listWithIndent(INDENTATION, "Parent", "Child 1", "Child 2");
+    assertEquals(expectedResult, actualResult);
+  }
 }
