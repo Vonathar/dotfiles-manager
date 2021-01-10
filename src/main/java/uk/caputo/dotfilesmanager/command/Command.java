@@ -40,7 +40,7 @@ public abstract class Command {
    *
    * @return the formatted command information.
    */
-  public String getInfo() {
-    return stringFormatter.separateSides(command, getDescription(), 15);
+  public String getSimpleInfo() {
+    return stringFormatter.separateSides(command, getDescription(), 15) + "\n";
   }
 }

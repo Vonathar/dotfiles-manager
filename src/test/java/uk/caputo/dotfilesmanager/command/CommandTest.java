@@ -23,7 +23,7 @@ class CommandTest {
         "test           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vu\n"
             + "               lputate luctus purus, nec cursus enim euismod in. Vivamus in bibe\n"
             + "               ndum ex, nec consequat libero. Proin molestie turpis nec aliquam.\n";
-    String actualResult = command.getInfo();
+    String actualResult = command.getSimpleInfo();
     assertEquals(expectedResult, actualResult);
   }
 
