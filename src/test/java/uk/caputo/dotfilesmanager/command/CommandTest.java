@@ -16,7 +16,7 @@ class CommandTest {
   @Autowired StringFormatter stringFormatter;
 
   @Test
-  void printInfo_ShouldPrintFormattedCommandWithDescription() {
+  void getSimpleInfo_ShouldPrintFormattedCommandWithDescription() {
     Command command = new TestCommand();
     ReflectionTestUtils.setField(command, "stringFormatter", stringFormatter);
     String expectedResult =

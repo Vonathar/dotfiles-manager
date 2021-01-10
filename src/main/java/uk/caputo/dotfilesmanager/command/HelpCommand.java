@@ -28,7 +28,7 @@ public class HelpCommand implements Help.Command {
     StringBuilder sb = new StringBuilder(applicationDataFormatter.getTitle());
     sb.append("The following commands are available:\n\n");
     for (Command c : commands) {
-      sb.append(c.getInfo());
+      sb.append(c.getSimpleInfo());
     }
     return sb.toString();
   }
