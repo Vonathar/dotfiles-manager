@@ -3,6 +3,7 @@ package uk.caputo.dotfilesmanager.command;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.caputo.dotfilesmanager.StringFormatter;
 
@@ -24,8 +25,6 @@ public abstract class Command {
     this.command = this.getClass().getSimpleName().replace("Command", "").toLowerCase();
     implementers.add(this);
   }
-
-  public abstract String getDescription();
 
   /**
    * Returns the list of all classes that extend the Command class.
@@ -49,5 +48,25 @@ public abstract class Command {
    */
   public String getSimpleInfo() {
     return stringFormatter.separateSides(command, getDescription(), 15) + "\n";
+  }
+
+  /**
+   * Returns the formatted command information with additional details. If available, all available
+   * options for the command are listed, as well as the usage examples.
+   *
+   * @return the formatted command, its options, and usage examples.
+   */
+  public String getDetailedInfo() {
+    StringBuilder sb = new StringBuilder();
+    sb.append(stringFormatter.capitalizeFirstLetter(command))
+        .append(".\n\n")
+        .append(stringFormatter.listWithIndent(2, "Usage:", getUsageExamples()));
+    List<String> formattedOptions = new ArrayList<>();
+    for (Map.Entry<String, String> entry : getOptions().entrySet()) {
+      formattedOptions.add(stringFormatter.separateSides(entry.getKey(), entry.getValue(), 13));
+    }
+    sb.append(
+        stringFormatter.listWithIndent(2, "Options:", formattedOptions.toArray(new String[0])));
+    return sb.toString();
   }
 }
