@@ -120,4 +120,12 @@ class StringFormatterTest {
         stringFormatter.listWithIndent(INDENTATION, "Parent", "Child 1", "Child 2");
     assertEquals(expectedResult, actualResult);
   }
+
+  @Test
+  void capitalizeFirstLetter_ShouldCapitalizeFirstCharacterInString() {
+    String input = "test";
+    String expectedResult = "Test";
+    String actualResult = stringFormatter.capitalizeFirstLetter(input);
+    assertEquals(expectedResult, actualResult);
+  }
 }
