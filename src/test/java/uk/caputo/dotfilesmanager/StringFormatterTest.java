@@ -88,7 +88,7 @@ class StringFormatterTest {
   void separateSides_ShouldReturnStringWithSeparatedContent() {
     String expectedResult =
         "XYZ                                                                         1234\n"
-            + "                                                                            5678\n";
+            + "                                                                            5678";
     String actualResult = stringFormatter.separateSides("XYZ", "12345678", 76);
     assertEquals(expectedResult, actualResult);
   }
